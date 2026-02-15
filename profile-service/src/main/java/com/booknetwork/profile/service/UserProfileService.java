@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -28,5 +30,11 @@ public class UserProfileService {
                 .orElseThrow(() -> new RuntimeException("Not found"));
 
         return userProfileMapper.toUserProfileResponse(userProfile);
+    }
+
+    public List<UserProfileResponse> getAllProfiles() {
+        var profiles = userProfileRepository.findAll();
+
+        return profiles.stream().map(userProfileMapper::toUserProfileResponse).toList();
     }
 }
