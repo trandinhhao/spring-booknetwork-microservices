@@ -1,5 +1,6 @@
 package com.booknetwork.profile.controller;
 
+import com.booknetwork.profile.dto.ApiResponse;
 import com.booknetwork.profile.dto.request.ProfileCreationRequest;
 import com.booknetwork.profile.dto.response.UserProfileResponse;
 import com.booknetwork.profile.service.UserProfileService;
@@ -23,12 +24,16 @@ public class UserProfileController {
 //    }
 
     @GetMapping("/users/{profileId}")
-    public UserProfileResponse getProfile(@PathVariable String profileId) {
-        return userProfileService.getProfile(profileId);
+    ApiResponse<UserProfileResponse> getProfile(@PathVariable String profileId) {
+        return ApiResponse.<UserProfileResponse>builder()
+                .result(userProfileService.getProfile(profileId))
+                .build();
     }
 
     @GetMapping("/users")
-    List<UserProfileResponse> getAllProfiles() {
-        return userProfileService.getAllProfiles();
+    ApiResponse<List<UserProfileResponse>> getAllProfiles() {
+        return ApiResponse.<List<UserProfileResponse>>builder()
+                .result(userProfileService.getAllProfiles())
+                .build();
     }
 }

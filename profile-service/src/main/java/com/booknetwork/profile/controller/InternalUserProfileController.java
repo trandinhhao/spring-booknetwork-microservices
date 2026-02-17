@@ -1,5 +1,6 @@
 package com.booknetwork.profile.controller;
 
+import com.booknetwork.profile.dto.ApiResponse;
 import com.booknetwork.profile.dto.request.ProfileCreationRequest;
 import com.booknetwork.profile.dto.response.UserProfileResponse;
 import com.booknetwork.profile.service.UserProfileService;
@@ -16,8 +17,10 @@ public class InternalUserProfileController {
     UserProfileService userProfileService;
 
     @PostMapping("/internal/users")
-    public UserProfileResponse createProfile(@RequestBody ProfileCreationRequest request) {
-        return userProfileService.createProfile(request);
+    ApiResponse<UserProfileResponse> createProfile(@RequestBody ProfileCreationRequest request) {
+        return ApiResponse.<UserProfileResponse>builder()
+                .result(userProfileService.createProfile(request))
+                .build();
     }
 
 //    @GetMapping("/users/{profileId}")
