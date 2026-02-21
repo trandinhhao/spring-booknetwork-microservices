@@ -10,8 +10,9 @@ import com.booknetwork.notification.repository.httpclient.EmailClient;
 import feign.FeignException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,9 @@ import java.util.List;
 public class EmailService {
     EmailClient emailClient;
 
-    @Value("${}")
-    String apikey = ;
+    @Value("${BREVO_KEY}")
+    @NonFinal
+    String apikey;
 
     public EmailResponse sendEmail(SendEmailRequest request) {
         EmailRequest emailRequest = EmailRequest.builder()
