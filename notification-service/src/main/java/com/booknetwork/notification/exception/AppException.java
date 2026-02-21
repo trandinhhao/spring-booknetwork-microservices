@@ -1,6 +1,6 @@
 package com.booknetwork.notification.exception;
 
-import com.booknetwork.profile.exception.ErrorCode;
+import com.booknetwork.notification.exception.ErrorCode;
 
 public class AppException extends RuntimeException {
 

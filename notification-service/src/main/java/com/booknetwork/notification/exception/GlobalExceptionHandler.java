@@ -1,7 +1,7 @@
 package com.booknetwork.notification.exception;
 
-import com.booknetwork.profile.dto.ApiResponse;
-import com.booknetwork.profile.exception.ErrorCode;
+import com.booknetwork.notification.dto.ApiResponse;
+import com.booknetwork.notification.exception.ErrorCode;
 import jakarta.validation.ConstraintViolation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

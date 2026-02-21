@@ -1,6 +1,6 @@
 package com.booknetwork.notification.configuration;
 
-import com.booknetwork.profile.configuration.JwtAuthenticationEntryPoint;
+import com.booknetwork.notification.configuration.JwtAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,7 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private static final String[] PUBLIC_ENDPOINTS = {
-        "/internal/users"
+        "/email/send"
     };
 
     private final CustomJwtDecoder customJwtDecoder;
