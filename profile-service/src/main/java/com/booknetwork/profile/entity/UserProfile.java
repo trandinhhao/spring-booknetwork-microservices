@@ -26,6 +26,9 @@ public class UserProfile {
     @Property("userId")
     String userId;
 
+    String username;
+    String email;
+
     @Property("firstName")
     String firstName;
 
