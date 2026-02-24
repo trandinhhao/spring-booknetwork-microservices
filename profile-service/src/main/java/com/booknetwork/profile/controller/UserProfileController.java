@@ -18,11 +18,6 @@ public class UserProfileController {
 
     UserProfileService userProfileService;
 
-//    @PostMapping("/users")
-//    public UserProfileResponse createProfile(@RequestBody ProfileCreationRequest request) {
-//        return userProfileService.createProfile(request);
-//    }
-
     @GetMapping("/users/{profileId}")
     ApiResponse<UserProfileResponse> getProfile(@PathVariable String profileId) {
         return ApiResponse.<UserProfileResponse>builder()
