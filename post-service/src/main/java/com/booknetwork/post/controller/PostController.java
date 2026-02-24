@@ -2,16 +2,14 @@ package com.booknetwork.post.controller;
 
 import com.booknetwork.post.dto.ApiResponse;
 import com.booknetwork.post.dto.request.PostRequest;
+import com.booknetwork.post.dto.response.PageResponse;
 import com.booknetwork.post.dto.response.PostResponse;
 import com.booknetwork.post.service.PostService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,10 +27,13 @@ public class PostController {
                 .build();
     }
 
-    @GetMapping("/my-post")
-    ApiResponse<List<PostResponse>> myPost() {
-        return ApiResponse.<List<PostResponse>>builder()
-                .result(postService.getMyPost())
+    @GetMapping("/my-posts")
+    ApiResponse<PageResponse<PostResponse>> myPost(
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "10") int size
+            ) {
+        return ApiResponse.<PageResponse<PostResponse>>builder()
+                .result(postService.getMyPost(page, size))
                 .build();
     }
 }
