@@ -1,6 +1,7 @@
 package com.booknetwork.profile.service;
 
 import com.booknetwork.profile.dto.request.ProfileCreationRequest;
+import com.booknetwork.profile.dto.request.SearchUserRequest;
 import com.booknetwork.profile.dto.request.UpdateProfileRequest;
 import com.booknetwork.profile.dto.response.FileResponse;
 import com.booknetwork.profile.dto.response.UserProfileResponse;
@@ -91,5 +92,14 @@ public class UserProfileService {
         profile.setAvatar(response.getResult().getUrl());
 
         return userProfileMapper.toUserProfileResponse(userProfileRepository.save(profile));
+    }
+
+    public List<UserProfileResponse> search(SearchUserRequest request) {
+        var userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<UserProfile> userProfiles = userProfileRepository.findAllByUsernameLike(request.getKeyword());
+        return userProfiles.stream()
+                .filter(userProfile -> !userId.equals(userProfile.getUserId()))
+                .map(userProfileMapper::toUserProfileResponse)
+                .toList();
     }
 }

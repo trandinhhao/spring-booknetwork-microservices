@@ -2,6 +2,7 @@ package com.booknetwork.profile.controller;
 
 import com.booknetwork.profile.dto.ApiResponse;
 import com.booknetwork.profile.dto.request.ProfileCreationRequest;
+import com.booknetwork.profile.dto.request.SearchUserRequest;
 import com.booknetwork.profile.dto.request.UpdateProfileRequest;
 import com.booknetwork.profile.dto.response.UserProfileResponse;
 import com.booknetwork.profile.service.UserProfileService;
@@ -52,6 +53,13 @@ public class UserProfileController {
     ApiResponse<UserProfileResponse> updateAvatar(@RequestParam("file")MultipartFile file) {
         return ApiResponse.<UserProfileResponse>builder()
                 .result(userProfileService.updateAvatar(file))
+                .build();
+    }
+
+    @PostMapping("/users/search")
+    ApiResponse<List<UserProfileResponse>> search(@RequestBody SearchUserRequest request) {
+        return ApiResponse.<List<UserProfileResponse>>builder()
+                .result(userProfileService.search(request))
                 .build();
     }
 }
