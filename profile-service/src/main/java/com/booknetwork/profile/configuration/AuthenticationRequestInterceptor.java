@@ -1,4 +1,4 @@
-package com.booknetwork.identity.configuration;
+package com.booknetwork.profile.configuration;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

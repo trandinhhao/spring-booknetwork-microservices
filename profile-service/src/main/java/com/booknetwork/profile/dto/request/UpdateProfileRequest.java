@@ -1,20 +1,16 @@
-package com.booknetwork.profile.dto.response;
+package com.booknetwork.profile.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserProfileResponse {
-    String id;
-    String username;
-    String avatar;
+public class UpdateProfileRequest {
     String email;
     String firstName;
     String lastName;
