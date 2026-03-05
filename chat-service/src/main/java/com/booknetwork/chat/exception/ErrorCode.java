@@ -16,7 +16,8 @@ public enum ErrorCode {
     UNAUTHORIZED(1007, "You do not have permission", HttpStatus.FORBIDDEN),
     INVALID_DOB(1008, "Your age must be at least {min}", HttpStatus.BAD_REQUEST),
     INVALID_EMAIL(1009, "Invalid email address", HttpStatus.BAD_REQUEST),
-    EMAIL_IS_REQUIRED(1009, "Email is required", HttpStatus.BAD_REQUEST)
+    EMAIL_IS_REQUIRED(1009, "Email is required", HttpStatus.BAD_REQUEST),
+    CONVERSATION_NOT_FOUND(1009, "Chat Conversation not found", HttpStatus.NOT_FOUND),
     ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
