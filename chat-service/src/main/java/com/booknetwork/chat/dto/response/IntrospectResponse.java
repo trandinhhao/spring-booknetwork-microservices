@@ -1,4 +1,4 @@
-package com.booknetwork.identity.dto.response;
+package com.booknetwork.chat.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
