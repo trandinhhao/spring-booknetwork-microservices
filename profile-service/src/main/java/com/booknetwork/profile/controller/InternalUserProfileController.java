@@ -23,8 +23,10 @@ public class InternalUserProfileController {
                 .build();
     }
 
-//    @GetMapping("/users/{profileId}")
-//    public UserProfileResponse getProfile(@PathVariable String profileId) {
-//        return userProfileService.getProfile(profileId);
-//    }
+    @GetMapping("/internal/users/{userId}")
+    ApiResponse<UserProfileResponse> getProfile(@PathVariable String userId) {
+        return ApiResponse.<UserProfileResponse>builder()
+                .result(userProfileService.getByUserId(userId))
+                .build();
+    }
 }

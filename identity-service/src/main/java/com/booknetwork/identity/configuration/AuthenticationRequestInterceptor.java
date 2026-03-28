@@ -10,7 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Slf4j
 public class AuthenticationRequestInterceptor implements RequestInterceptor {
     @Override
-    public void apply(RequestTemplate template) {
+    public void apply(RequestTemplate template) { // them cai auth vao header khi request
 
         ServletRequestAttributes servletRequestAttributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
